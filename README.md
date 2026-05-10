@@ -5,6 +5,10 @@ MediQuery is an AI-powered Medical Document Question Answering system built usin
 The project follows a modern modular architecture using FastAPI for backend APIs and Streamlit for the frontend interface, making the system scalable, easy to maintain, and deployment-ready.
 
 ---
+## 🏗️ Architecture
+
+![Architecture](assets/mediquery-architecture.png)
+---
 
 # 🚀 Features
 
