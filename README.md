@@ -1,254 +1,311 @@
-# 👽 RAG PDFBot - V3 (FastAPI + Streamlit)
+# 🩺 MediQuery – Medical Document Q&A Bot
 
-This is the **production-ready refactor** of [rag-bot-chroma](https://github.com/Zlash65/rag-bot-chroma), introducing a real separation between frontend (UI) and backend (logic) using **Streamlit** and **FastAPI** respectively. This modular architecture helps in scaling, extending, and deploying the bot in real-world environments.
+MediQuery is an AI-powered Medical Document Question Answering system built using Retrieval-Augmented Generation (RAG). The application allows users to upload medical PDF documents and ask context-aware questions using Large Language Models (LLMs).
 
----
-
-<details>
-  <summary> 🔗 Helpful Links </summary>
-
-- 🧑‍💻 [Version 1 - Basic RAG PDFBot (FAISS)](https://github.com/Zlash65/rag-bot-basic)
-- ✍️ [V1 Blog Walkthrough](https://dev.to/zlash65/building-a-rag-powered-pdf-chatbot-with-langchain-streamlit-and-faiss-9i9)
-
-- 🧑‍💻 [Version 2 - Modular Streamlit + Chroma](https://github.com/Zlash65/rag-bot-chroma)
-- ✍️ [V2 Blog Walkthrough](https://dev.to/zlash65/refactoring-rag-pdfbot-modular-design-with-langchain-streamlit-and-chromadb-41fn)
-
-- 🧑‍💻 [Version 3 - Streamlit + FastAPI](https://github.com/Zlash65/rag-bot-fastapi)
-- ✍️ [V3 Blog Walkthrough](https://dev.to/zlash65/rag-pdfbot-v3-from-prototype-to-production-ready-ish-58h7)
-
-</details>
+The project follows a modern modular architecture using FastAPI for backend APIs and Streamlit for the frontend interface, making the system scalable, easy to maintain, and deployment-ready.
 
 ---
 
-## 🔄 What Changed from `rag-bot-chroma`
+# 🚀 Features
 
-| Feature | Version 2 | Version 3 |
-|--------|-------------|--------------|
-| Codebase | One Streamlit app | Split into `client/` + `server/` |
-| PDF Upload | In Streamlit | Async FastAPI API |
-| Chat | In Streamlit | Calls `/chat` API |
-| Vectorstore | In UI | Controlled by backend |
-| Model Options | Static | Dynamically fetched |
-| Inspector | In sidebar | Main panel toggle |
-| Splitting | `RecursiveTextSplitter` | `TokenTextSplitter` |
-| UX | Crude | Responsive, clear, downloadable |
-| Extendability | Hard | Easy to plug new LLMs, tools |
-
----
-
-## 🧪 How It Looks
-
-### Demo
-![demo-gif](/assets/rag-bot-fastapi.gif)
+* 📁 Upload and analyze multiple medical PDF documents
+* 🧠 Context-aware question answering using RAG architecture
+* 🔍 Semantic search with vector embeddings
+* 💬 Interactive chatbot interface
+* ⚡ FastAPI-powered backend APIs
+* 🎨 Streamlit frontend with responsive UI
+* 🔌 Support for Groq and Gemini LLM providers
+* 🧪 Token-based document chunking for better retrieval
+* 📦 Downloadable chat history
+* 🔄 Reset and clear chat functionality
+* 🔎 Query inspector for debugging and transparency
+* 🌐 API-driven modular architecture
 
 ---
 
-## 🏗️ Architecture
+# 🏗️ System Architecture
 
-![architecture](/assets/rag-bot-fastapi-architecture.png)
+The project is divided into two independent modules:
 
----
+## 1. Frontend (Client)
 
-## 🚀 Features
+Built using Streamlit.
 
-- 📁 Upload multiple PDFs and chat with them
-- 🔌 Choose from Groq or Gemini as LLM providers
-- 🔎 Query inspector for vectorstore transparency
-- 🧠 RAG with LangChain + ChromaDB
-- 📦 Streamlit frontend, FastAPI backend
-- 🧪 Token-based chunking for LLM precision
-- 💬 Downloadable chat history
-- 🧰 Tools for reset, undo, clear
-- 🌐 Fully API-driven interaction
+Responsibilities:
 
----
+* PDF upload interface
+* Chat interface
+* Chat history management
+* Displaying responses
+* Model selection
+* User interaction handling
 
-<details>
-  <summary>🛠️ Tech Stack</summary>
+## 2. Backend (Server)
 
-- **Frontend**: Streamlit
-- **Backend**: FastAPI
-- **LLMs**: Groq & Gemini via LangChain
-- **Vector DB**: ChromaDB
-- **Embeddings**: HuggingFace & Google GenAI
-- **Chunking**: TokenTextSplitter (was RecursiveCharacterTextSplitter)
-- **Parsing**: PyPDF
-- **Orchestration**: LangChain Retrieval Chain
+Built using FastAPI.
 
-</details>
+Responsibilities:
+
+* Document processing
+* Embedding generation
+* Vector database operations
+* Retrieval pipeline
+* LLM response generation
+* API endpoints
 
 ---
 
-## 📦 Installation
+# 🧠 RAG Workflow
+
+1. User uploads medical PDF documents
+2. Backend extracts document text
+3. Text is split into token-based chunks
+4. Embeddings are generated
+5. Chunks are stored inside vector database
+6. User asks a question
+7. Relevant chunks are retrieved
+8. LLM generates context-aware answer
+9. Response is displayed in chat interface
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+* Streamlit
+
+## Backend
+
+* FastAPI
+* Uvicorn
+
+## AI & RAG
+
+* LangChain
+* ChromaDB
+* Google Gemini API
+* Groq API
+
+## Programming Language
+
+* Python
+
+---
+
+# 📂 Project Structure
 
 ```bash
-git clone https://github.com/Zlash65/rag-bot-fastapi.git
-cd rag-bot-fastapi
+MediQuery-Medical-Document-QA-Bot/
+│
+├── client/
+│   ├── components/
+│   ├── state/
+│   ├── utils/
+│   ├── app.py
+│   └── requirements.txt
+│
+├── server/
+│   ├── api/
+│   ├── config/
+│   ├── core/
+│   ├── utils/
+│   ├── main.py
+│   └── requirements.txt
+│
+├── assets/
+├── README.md
+├── LICENSE
+└── .gitignore
 ```
 
-Setup Virtual Environment:
+---
+
+# 📦 Installation Guide
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/anujpratap12/MediQuery-Medical-Document-QA-Bot.git
+```
+
+## 2. Open Project Folder
+
+```bash
+cd MediQuery-Medical-Document-QA-Bot
+```
+
+## 3. Create Virtual Environment
+
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Linux / Mac
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-Install frontend:
+---
+
+# 📥 Install Dependencies
+
+## Install Frontend Dependencies
 
 ```bash
 cd client
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-Install backend:
+## Install Backend Dependencies
 
 ```bash
 cd ../server
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ---
 
-## 🔐 API Keys Required
+# 🔐 Environment Variables
 
-- **Groq API key** from [console.groq.com](https://console.groq.com/)
-- **Google Gemini API key** from [ai.google.dev](https://ai.google.dev/)
+Create a `.env` file inside the server directory.
 
-Create a `.env` file:
+Example:
 
 ```env
-GROQ_API_KEY=your-groq-key
-GOOGLE_API_KEY=your-google-key
+GROQ_API_KEY=your_groq_api_key
+GOOGLE_API_KEY=your_google_api_key
 ```
 
 ---
 
-## ▶️ Run the Bot
+# ▶️ Running the Application
 
-Start FastAPI backend:
+## Start Backend Server
+
+Open Terminal 1:
 
 ```bash
-# Terminal 1
 cd server
 uvicorn main:app --reload
 ```
 
-Start Streamlit frontend:
+Backend runs on:
 
 ```bash
-# Terminal 2
+http://127.0.0.1:8000
+```
+
+---
+
+## Start Frontend Application
+
+Open Terminal 2:
+
+```bash
 cd client
 streamlit run app.py
 ```
 
----
-
-<details>
-  <summary>📁 Project Structure</summary>
+Frontend runs on:
 
 ```bash
-rag-bot-v3/
-├── client/                         # Streamlit Frontend
-│   ├── app.py                      # Main Streamlit entrypoint
-│   ├── components/                 # UI modules
-│   │   ├── chat.py
-│   │   ├── inspector.py
-│   │   └── sidebar.py
-│   ├── state/
-│   │   └── session.py              # Session state manager
-│   ├── utils/
-│   │   ├── api.py                  # Talks to backend
-│   │   ├── config.py               # API_URL and config values
-│   │   └── helpers.py              # API wrappers for frontend
-│   ├── requirements.txt
-│   └── README.md
-
-├── server/                         # FastAPI Backend
-│   ├── api/
-│   │   ├── routes.py               # API endpoints
-│   │   └── schemas.py              # Pydantic schemas for I/O
-│   ├── core/
-│   │   ├── document_processor.py   # Handles PDF validation and chunking
-│   │   ├── llm_chain_factory.py    # Builds LLM chains and prompts
-│   │   └── vector_database.py      # Embeddings + ChromaDB ops
-│   ├── config/
-│   │   └── settings.py             # App config, model provider setup
-│   ├── utils/
-│   │   └── logger.py               # Logging setup
-│   ├── main.py                     # FastAPI app entrypoint
-│   ├── requirements.txt
-│   └── README.md
-
-├── README.md                       # Root README (overview + instructions)
-├── .gitignore
+http://localhost:8501
 ```
 
-</details>
+---
+
+# 💡 Example Use Cases
+
+* Medical report analysis
+* Clinical document Q&A
+* Healthcare document retrieval
+* AI-powered medical assistant
+* Patient report understanding
+* Research paper querying
 
 ---
 
-<details>
-  <summary> 👓 Different Views </summary>
+# 🔍 Core Functionalities
 
-| View | Description |
-|------|-------------|
-| 💬 Chat | Renders chat bubbles, input box, and chat history download |
-| 🔬 Inspector | Renders inspector to test vectorstore responses |
+## 📁 Multi-PDF Upload
 
-![views](/assets/rag-bot-fastapi-clean-ui-ux.gif)
+Users can upload multiple PDF files simultaneously for retrieval-based querying.
 
-</details>
+## 🧠 Intelligent Retrieval
 
----
+Relevant chunks are retrieved using semantic similarity search.
 
-<details>
-  <summary>🧼 Tools Panel</summary>
+## 💬 Conversational Chat
 
-| Button | Function |
-|----------|--------|
-| 🔄 Reset | Clears session state and reruns app |
-| 🧹 Clear Chat | Clears chat + PDF submission |
-| ↩️ Undo | Removes last question/response |
+Users can interact with uploaded medical documents naturally.
 
-</details>
+## 🔎 Query Inspector
+
+Displays retrieved chunks and metadata for transparency.
+
+## 📦 Download Chat History
+
+Users can export conversation history.
 
 ---
 
-<details>
-  <summary>📦 Download Chat History</summary>
+# ⚙️ API Endpoints
 
-Chat history is saved in the session state and can be exported as a CSV with the following columns:
+## Upload Documents
 
-| Question | Answer | Model Provider | Model Name | PDF File | Timestamp |
-|----------|--------|----------------|------------|---------------------|-----------|
-| What is this PDF about? | This PDF explains... | Groq | llama3-70b-8192 | file1.pdf, file2.pdf | 2025-07-03 21:00:00 |
+```bash
+POST /upload
+```
 
-</details>
+## Chat Query
 
----
+```bash
+POST /chat
+```
 
-<details>
-  <summary>🙏 Acknowledgements</summary>
+## Reset Session
 
-- [LangChain](https://www.langchain.com/)
-- [Streamlit](https://streamlit.io/)
-- [Groq](https://console.groq.com/)
-- [Google Gemini](https://ai.google.dev/)
-- [Chroma](https://docs.trychroma.com/)
-
-</details>
+```bash
+POST /reset
+```
 
 ---
 
-## 🧠 New to this Project?
+# 📈 Future Improvements
 
-Start from the basics:
-👉 [Version 1 - rag-bot-basic](https://github.com/Zlash65/rag-bot-basic)
-
-Understand modular design:
-👉 [Version 2 - rag-bot-chroma](https://github.com/Zlash65/rag-bot-chroma)
-
-Then return here for real-world patterns.
+* 🔐 User authentication system
+* ☁️ Cloud deployment
+* 🗂️ Database integration
+* 📱 Mobile-friendly UI
+* 🧬 Medical terminology optimization
+* 🎙️ Voice-based interaction
+* 📊 Advanced analytics dashboard
 
 ---
 
-Happy building! 🛠️
+# 👨‍💻 Developer
+
+Anuj Pratap Singh
+
+* AI/ML Enthusiast
+* AI/ML Intern
+* Final Year Engineering Student
+
+---
+
+# 🙌 Acknowledgements
+
+This project was developed as part of learning and implementing modern Retrieval-Augmented Generation (RAG) systems using FastAPI, Streamlit, LangChain, and Vector Databases.
+
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a star on GitHub.
